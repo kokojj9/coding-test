@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class BarkjoonTest {
 
     // 성적 구하기
-    public void abc() {
+    public void test9498() {
         Scanner sc = new Scanner(System.in);
         int score = sc.nextInt();
 
@@ -25,7 +25,7 @@ public class BarkjoonTest {
     }
 
     // 윤년구하기
-    public void abc1() {
+    public void test2753() {
         Scanner sc = new Scanner(System.in);
         int year = sc.nextInt();
 
@@ -37,8 +37,23 @@ public class BarkjoonTest {
     }
 
     // 사분면 고르기
-    public void abc2() {
-        
+    public void test14681() {
+        Scanner sc = new Scanner(System.in);
+        int x = sc.nextInt();
+        int y = sc.nextInt();
+
+        if(x > 0 && y > 0){
+            System.out.println(1);
+        } else if (x > 0 && y < 0) {
+            System.out.println(4);
+        } else if (x < 0 && y > 0){
+            System.out.println(2);
+        } else if (x < 0 && y < 0) {
+            System.out.println(3);
+        }
+
+        sc.close();
     }
+
 
 }
