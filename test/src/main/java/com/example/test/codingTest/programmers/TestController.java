@@ -80,7 +80,19 @@ public class TestController {
 
         return -1;
     }
-    
+
+    // 카운트 다운(리스트,배열)
+    public int[] solution7(int start_num, int end_num) {
+        int gap = start_num - end_num;
+        int[] answer = new int[gap + 1];
+        int index = 0;
+
+        for(int i = 0; i <= gap; i++){
+            answer[index++] = start_num - i;
+        }
+
+        return answer;
+    }
     
     
     
