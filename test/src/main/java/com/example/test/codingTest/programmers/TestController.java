@@ -57,4 +57,40 @@ public class TestController {
         // return IntStream.range(0, num_list.length).map(i -> num_list[(i + n) % num_list.length]).toArray();
     }
 
+    // n번째 원소부터 (리스트, 배열)
+    public int[] solution5(int[] num_list, int n) {
+        int length = num_list.length;
+        int[] answer = new int[length - n + 1];
+        int idx = 0;
+
+        for(int i = n - 1; i < length; i++){
+            answer[idx++] = num_list[i];
+        }
+
+        return answer;
+        //int[] a= Arrays.copyOfRange(num_list, n-1, num_list.length); 다른사람풀이
+        //return a;
+    }
+
+    // 첫 번째로 나오는 음수
+    public int solution6(int[] num_list) {
+        for(int i = 0; i < num_list.length; i++){
+            if(num_list[i] < 0) return i;
+        }
+
+        return -1;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
