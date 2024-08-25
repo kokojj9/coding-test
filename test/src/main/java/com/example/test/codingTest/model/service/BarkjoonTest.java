@@ -1,5 +1,7 @@
 package com.example.test.codingTest.model.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class BarkjoonTest {
@@ -54,6 +56,8 @@ public class BarkjoonTest {
 
         sc.close();
     }
+
+
 
 
 }
