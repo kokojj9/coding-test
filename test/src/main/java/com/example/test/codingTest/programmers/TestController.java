@@ -36,7 +36,6 @@ public class TestController {
         int[] answer = new int[n];
 
         System.arraycopy(num_list, 0, answer, 0, n);
-
         return answer;
     }
 
@@ -74,8 +73,6 @@ public class TestController {
         for (int i = 0; i < num_list.length; i++) {
             if (num_list[i] < 0) return i;
         }
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        list.toArray();
 
         return -1;
     }
@@ -110,7 +107,6 @@ public class TestController {
     // 문자열 섞기
     public String solution9(String str1, String str2) {
         StringBuilder answer = new StringBuilder();
-
         for (int i = 0; i < str1.length(); i++) {
             answer.append(str1.charAt(i)).append(str2.charAt(i));
         }
@@ -134,7 +130,6 @@ public class TestController {
         String num2 = Integer.toString(b) + a;
 
         return num1.compareTo(num2) >= 0 ? Integer.parseInt(num1) : Integer.parseInt(num2);
-        
         //return Math.max(Integer.parseInt(a + "" + b), Integer.parseInt(b + "" + a)); 다른사람 풀이
     }
     
@@ -142,6 +137,130 @@ public class TestController {
     public int solution(int a, int b) {
         return Math.max(Integer.parseInt(a + "" + b), (2 * a * b));
     }
+
+    //코드 처리
+    public String solution13(String code) {
+        StringBuilder answer = new StringBuilder();
+        boolean mode = false;
+
+        for (int i = 0; i < code.length(); i++) {
+            char ch = code.charAt(i);
+
+            if (ch == '1') {
+                mode = !mode;
+            } else if ((mode && i % 2 == 1) || (!mode && i % 2 == 0)) {
+                answer.append(ch);
+            }
+        }
+
+        return answer.length() == 0 ? "EMPTY" : answer.toString();
+    }
+
+    //등차수열 특정항 더하기
+    public int solution14(int a, int d, boolean[] included) {
+        int answer = 0;
+        int curNum = a;
+
+        for(int i = 0; i < included.length; i++){
+            answer = included[i] ? answer + curNum : answer;
+            curNum += d;
+        }
+
+        return answer;
+
+//        int answer = 0;
+//
+//        for(int i = 0; i < included.length; i++){
+//            if(included[i]){
+//                answer +=  a + (d*i);
+//            }
+//        }
+//
+//        return answer;
+    }
+
+    // 원소들의 곱과 합
+    public int solution15(int[] num_list) {
+        int pro = 1;
+        int sum = 0;
+
+        for(int num: num_list){
+            pro *= num;
+            sum += num;
+        }
+
+        return pro > sum * sum ? 0 : 1;
+    }
+
+    // 수 조작하기 2
+    public String solution16(int[] numLog) {
+        StringBuilder answer = new StringBuilder();
+
+        for(int i = 1; i < numLog.length; i++){
+            int diff = numLog[i] - numLog[i - 1];
+
+            switch(diff){
+                case 1   -> answer.append("w");
+                case -1  -> answer.append("s");
+                case 10  -> answer.append("d");
+                case -10 -> answer.append("a");
+            }
+        }
+
+        return answer.toString();
+    }
+
+    // 수열과 구간 쿼리3
+    public int[] solution17(int[] arr, int[][] queries) {
+        for(int[] query : queries){
+            int i = query[0];
+            int j = query[1];
+
+            int num = arr[i];
+            arr[i] = arr[j];
+            arr[j] = num;
+        }
+
+        return arr;
+    }
+
+    // 수열과 구간 쿼리2
+    public int[] solution18(int[] arr, int[][] queries) {
+        int[] answer = new int[queries.length];
+
+        for(int i = 0; i < queries.length; i++){
+
+            int s = queries[i][0];
+            int e = queries[i][1];
+            int k = queries[i][2];
+
+            int min = 1000000;
+
+            for(int j = s; j <= e; j++){
+                if(arr[j] > k && arr[j] < min) {
+                    min = arr[j];
+                }
+            }
+            answer[i] = min != 1000000 ? min : -1;
+        }
+
+        return answer;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
