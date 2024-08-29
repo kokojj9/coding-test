@@ -264,7 +264,35 @@ public class TestController {
         return arr;
     }
 
+    // 배열만들기2
+    public int[] solution20(int l, int r) {
+        int[] answer = new int[r - l + 1];
+        int length = 0;
 
+        for(int i = l; i <= r; i++){
+            String numStr = String.valueOf(i);
+            if(numStr.matches("[05]+")){
+                answer[length++] = i;
+            }
+        }
+
+        if(length == 0) return new int[]{-1};
+
+        int[] result = new int[length];
+        System.arraycopy(answer, 0, result, 0, length);
+
+        return result;
+        // 다른사람풀이
+//        ArrayList<Integer> list = new ArrayList<>();
+//
+//        for (int i = 1; i < 64; i++) {
+//            int num = Integer.parseInt(Integer.toBinaryString(i)) * 5; 2진수를 활용하여 5를 곱하여 사용함
+//            if (l <= num && num <= r)
+//                list.add(num);
+//        }
+//
+//        return list.isEmpty() ? new int[] { -1 } : list.stream().mapToInt(i -> i).toArray();
+    }
 
 
 
