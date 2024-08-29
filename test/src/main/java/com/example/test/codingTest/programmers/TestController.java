@@ -1,6 +1,7 @@
 package com.example.test.codingTest.programmers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class TestController {
@@ -323,8 +324,61 @@ public class TestController {
         return stk.stream().mapToInt(Integer::intValue).toArray();
     }
 
+    // 주사위 게임3
+    public int solution23(int a, int b, int c, int d) {
+        int[] numbers = {a, b, c, d};
+        Arrays.sort(numbers);
 
+        if(numbers[0] == numbers[3]) return 1111 * numbers[0];
+        if(numbers[0] == numbers[2] || numbers[1] == numbers[3]) {
+            int p = (numbers[0] == numbers[2]) ? numbers[0] : numbers[3];
+            int q = (numbers[0] == numbers[2]) ? numbers[3] : numbers[0];
+            return (10 * p + q) * (10 * p + q);
+        }
+        if (numbers[0] == numbers[1] && numbers[2] == numbers[3]) {
+            return (numbers[0] + numbers[2]) * Math.abs(numbers[0] - numbers[2]);
+        }
 
+        if (numbers[0] == numbers[1] || numbers[1] == numbers[2] || numbers[2] == numbers[3]) {
+            int p = (numbers[0] == numbers[1]) ? numbers[0] : (numbers[1] == numbers[2]) ? numbers[1] : numbers[2];
+            int q = (numbers[0] == numbers[1] && numbers[2] != numbers[3]) ? numbers[2] : (numbers[1] == numbers[2] && numbers[0] != numbers[3]) ? numbers[3] : numbers[0];
+            int r = (q == numbers[0] || q == numbers[1]) ? (numbers[2] == p ? numbers[3] : numbers[2]) : numbers[1];
+            return q * r;
+        }
+
+        return numbers[0];
+    }
+
+    // 9로나눈 나머지
+    public int solution24(String number) {
+        int sum = 0;
+
+        for (int i = 0; i < number.length(); i++) {
+            sum += Integer.parseInt(String.valueOf(number.charAt(i)));
+        }
+
+        return sum % 9;
+    }
+
+    // 문자 여러번 뒤집기
+    public String solution(String my_string, int[][] queries) {
+        StringBuilder answer = new StringBuilder(my_string);
+
+        for(int [] query : queries){
+            int s = query[0];
+            int e = query[1];
+
+            while(s < e){
+                char ch = answer.charAt(s);
+                answer.setCharAt(s, answer.charAt(e));
+                answer.setCharAt(e, ch);
+                s++;
+                e--;
+            }
+        }
+
+        return answer.toString();
+    }
 
 
 
