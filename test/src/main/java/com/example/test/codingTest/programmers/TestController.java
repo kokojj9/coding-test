@@ -294,7 +294,34 @@ public class TestController {
 //        return list.isEmpty() ? new int[] { -1 } : list.stream().mapToInt(i -> i).toArray();
     }
 
+    // 콜라츠 수열 만들기
+    public int[] solution21(int n) {
+        List<Integer> answer = new ArrayList<>();
 
+        while(n != 1) {
+            answer.add(n);
+            n = n % 2 == 0 ? n / 2 : 3 * n + 1;
+        }
+        answer.add(1);
+
+        return answer.stream().mapToInt(Integer::intValue).toArray();
+    }
+
+    // 배열 만들기4
+    public int[] solution22(int[] arr) {
+        List<Integer> stk = new ArrayList<>();
+        int i = 0;
+
+        while(i < arr.length){
+            if (stk.isEmpty() || stk.get(stk.size() - 1) < arr[i]) {
+                stk.add(arr[i++]);
+            } else {
+                stk.remove(stk.size() - 1);
+            }
+        }
+
+        return stk.stream().mapToInt(Integer::intValue).toArray();
+    }
 
 
 
