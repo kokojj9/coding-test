@@ -361,7 +361,7 @@ public class TestController {
     }
 
     // 문자 여러번 뒤집기
-    public String solution(String my_string, int[][] queries) {
+    public String solution25(String my_string, int[][] queries) {
         StringBuilder answer = new StringBuilder(my_string);
 
         for(int [] query : queries){
@@ -379,6 +379,34 @@ public class TestController {
 
         return answer.toString();
     }
+
+    // 배열 만들기5
+    public int[] solution26(String[] intStrs, int k, int s, int l) {
+        ArrayList<Integer> list = new ArrayList<>();
+
+        for(int i = 0; i < intStrs.length; i++){
+            int num = Integer.parseInt(intStrs[i].substring(s, s + l));
+            if(num > k){
+                list.add(num);
+            }
+        }
+
+        int[] answer = new int[list.size()];
+        for(int i = 0; i < list.size(); i++){
+            answer[i] = list.get(i);
+        }
+
+        return answer;
+    }
+
+
+
+
+
+
+
+
+
 
 
 
