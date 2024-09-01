@@ -395,9 +395,40 @@ public class TestController {
         for(int i = 0; i < list.size(); i++){
             answer[i] = list.get(i);
         }
+        
+        return answer;
+    }
+
+    // 접미사 배열
+    public String[] solution27(String my_string) {
+        int n = my_string.length();
+        String[] answer = new String[n];
+
+        for(int i = 0; i < n; i++){
+            answer[i] = my_string.substring(i);
+        }
+
+        Arrays.sort(answer);
 
         return answer;
     }
+
+    public String solution28(String my_string, int s, int e) {
+        StringBuilder answer = new StringBuilder(my_string);
+
+        while(s < e){
+            char ch = my_string.charAt(s);
+            answer.setCharAt(s, answer.charAt(e));
+            answer.setCharAt(e, ch);
+            s++;
+            e--;
+        }
+
+        // 문자열.reverse(); 메서드도 있음!!!
+
+        return answer.toString();
+    }
+
 
 
 
