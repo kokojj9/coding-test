@@ -429,12 +429,60 @@ public class TestController {
         return answer.toString();
     }
 
+    //세로읽기
+    public String solution29(String my_string, int m, int c) {
+        StringBuilder answer = new StringBuilder();
 
+        for(int i = c - 1; i < my_string.length(); i += m){
+            answer.append(my_string.charAt(i));
+        }
 
+        return answer.toString();
+    }
 
+    //qr code
+    public String solution30(int q, int r, String code) {
+        StringBuilder answer = new StringBuilder();
 
+        for(int i = 0; i < code.length(); i++){
+            if(i % q == r) answer.append(code.charAt(i));
+        }
 
+        return answer.toString();
+    }
 
+    // 문자 개수세기
+    public int[] solution31(String my_string) {
+        int[] answer = new int[52];
+
+        for(char ch : my_string.toCharArray()){
+            if(ch >= 'a' && ch <= 'z') answer[ch - 'a'  + 26]++;
+            else if(ch >= 'A' && ch <= 'Z') answer[ch - 'A' ]++;
+        }
+
+        return answer;
+    }
+    
+    //글자 지우기
+    public String solution32(String my_string, int[] indices) {
+        StringBuilder answer = new StringBuilder();
+        int j = 0;
+        Arrays.sort(indices);
+
+        for(int i = 0; i < my_string.length(); i++){
+            if(j < indices.length && i == indices[j]) {
+                j++;
+                continue;
+            }
+            answer.append(my_string.charAt(i));
+        }
+
+        return answer.toString();
+
+//        String[] str = my_string.split("");
+//        for (int i=0;i<indices.length;i++) str[indices[i]] = "";
+//        return String.join("",str);
+    }
 
 
 
