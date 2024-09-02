@@ -483,8 +483,15 @@ public class TestController {
 //        for (int i=0;i<indices.length;i++) str[indices[i]] = "";
 //        return String.join("",str);
     }
+    
+    // 가장 가까운 1 찾기
+    public int solution(int[] arr, int idx) {
+        for(int i = idx; i < arr.length; i++){
+            if(arr[i] == 1) return i;
+        }
 
-
+        return -1;
+    }
 
 
 
