@@ -485,7 +485,7 @@ public class TestController {
     }
     
     // 가장 가까운 1 찾기
-    public int solution(int[] arr, int idx) {
+    public int solution33(int[] arr, int idx) {
         for(int i = idx; i < arr.length; i++){
             if(arr[i] == 1) return i;
         }
@@ -493,7 +493,54 @@ public class TestController {
         return -1;
     }
 
+    //배열만들기 3
+    public int[] solution34(int[] arr, int[][] intervals) {
+        int first = intervals[0][1] - intervals[0][0] + 1;
+        int second = intervals[1][1] - intervals[1][0] + 1;
+        int[] answer = new int[first + second];
 
+        System.arraycopy(arr, intervals[0][0], answer, 0, first);
+        System.arraycopy(arr, intervals[1][0], answer, first, second);
+
+        return answer;
+    }
+
+    //리스트 자르기
+    public int[] solution35(int n, int[] slicer, int[] num_list) {
+        if(n == 1){
+            int[] answer = new int[slicer[1] + 1];
+            System.arraycopy(num_list, 0, answer, 0, slicer[1] + 1);
+            return answer;
+        } else if(n == 2){
+            int[] answer = new int[num_list.length - slicer[0]];
+            System.arraycopy(num_list, slicer[0], answer, 0, num_list.length - slicer[0]);
+            return answer;
+        } else if(n == 3){
+            int[] answer = new int[slicer[1] - slicer[0] + 1];
+            System.arraycopy(num_list, slicer[0], answer, 0, slicer[1] - slicer[0] + 1);
+            return answer;
+        } else if(n == 4){
+            int[] answer = new int[(slicer[1] - slicer[0]) / slicer[2] + 1];
+            int idx = 0;
+            for(int i = slicer[0]; i <= slicer[1]; i+=slicer[2]){
+                answer[idx] = num_list[i];
+                idx++;
+            }
+            return answer;
+        }
+        return null;
+//      다른풀이
+//        int start = n == 1 ? 0 : slicer[0];
+//        int end = n == 2 ? num_list.length - 1 : slicer[1];
+//        int step = n == 4 ? slicer[2] : 1;
+//        int[] answer = new int[(end - start + step) / step];
+//        for (int i = start, j = 0; i <= end; i += step) {
+//            answer[j++] = num_list[i];
+//        }
+//        return answer;
+//    }
+//        }
+    }
 
 
 
