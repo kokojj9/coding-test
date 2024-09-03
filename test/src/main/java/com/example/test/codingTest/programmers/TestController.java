@@ -542,11 +542,61 @@ public class TestController {
 //        }
     }
 
+    // 2의 영역
+    public int[] solution36(int[] arr) {
+        int[] answer = {};
+        int first = -1;
+        int last = -1;
 
+        for(int i = 0; i < arr.length; i++){
+            if(arr[i] == 2) {
+                if(first == -1) {
+                    first = i;
+                }
+                last = i;
+            }
+        }
 
+        return first != -1 ? Arrays.copyOfRange(arr, first, last + 1) : new int[]{-1};
+    }
+    
+    //배열조각하기
+    public int[] solution37(int[] arr, int[] query) {
+        int start = 0;
+        int end = arr.length;
 
+        for(int i = 0; i < query.length; i++){
+            if(i % 2 == 0){
+                end = start + query[i] + 1;
+            } else {
+                start += query[i];
+            }
+        }
 
+        return Arrays.copyOfRange(arr, start, end);
+    }
 
+    //왼쪽 오른쪽
+    public String[] solution38(String[] str_list) {
+        int start = 0;
+        int end = str_list.length;
+        boolean flag = false;
+
+        for(int i = 0; i < str_list.length; i++) {
+            if(str_list[i].equals("l")) {
+                end = i;
+                flag = true;
+                break;
+            }
+            else if(str_list[i].equals("r")) {
+                start = i + 1;
+                flag = true;
+                break;
+            }
+        }
+
+        return flag ? Arrays.copyOfRange(str_list, start, end) : new String[]{};
+    }
 
 
 }
