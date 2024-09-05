@@ -598,5 +598,89 @@ public class TestController {
         return flag ? Arrays.copyOfRange(str_list, start, end) : new String[]{};
     }
 
+    //5명씩
+    public String[] solution39(String[] names) {
+        int count = (int) Math.ceil((double) names.length / 5);
+        String[] answer = new String[count];
+
+        for(int i = 0; i < count; i++){
+            int idx = i * 5;
+            answer[i] = names[idx];
+        }
+
+        return answer;
+    }
+    // 할일 목록
+    public String[] solution40(String[] todo_list, boolean[] finished) {
+        StringBuilder str = new StringBuilder();
+
+        for(int i = 0; i < finished.length; i++){
+            if(!finished[i]){
+                str.append(todo_list[i]).append(",");
+            }
+        }
+
+        return str.toString().split(",");
+    }
+    //수열과 구간쿼리1
+    public int[] solution41(int[] arr, int[][] queries) {
+        for(int i = 0; i < queries.length; i++){
+            int s = queries[i][0];
+            int e = queries[i][1];
+            for(int j = s; j <= e; j++){
+                arr[j]++;
+            }
+        }
+
+        return arr;
+    }
+
+    // 조건에 맞게 수열 반환
+    public int solution42(int[] arr) {
+        int [] prevArr;
+        int count = 0;
+
+        while(true){
+            prevArr = arr.clone();
+
+            for(int i = 0; i < arr.length; i++){
+                if (arr[i] >= 50 && arr[i] % 2 == 0) {
+                    arr[i] /= 2;
+                } else if (arr[i] < 50 && arr[i] % 2 != 0) {
+                    arr[i] = arr[i] * 2 + 1;
+                }
+            }
+
+            if(Arrays.equals(prevArr, arr)){
+                break;
+            }
+
+            count++;
+        }
+
+        return count;
+    }
+    // 1로 만들기
+    public int solution43(int[] num_list) {
+        int answer = 0;
+
+        for (int i = 0; i < num_list.length; i++) {
+            while (num_list[i] > 1) {
+                if (num_list[i] % 2 == 0) {
+                    num_list[i] /= 2;
+                } else {
+                    num_list[i] = (num_list[i] - 1) / 2;
+                }
+                answer++;
+            }
+        }
+
+        return answer;
+    }
+    // 원하는 문자열찾기
+    public int solution44(String myString, String pat) {
+        return myString.toLowerCase().contains(pat.toLowerCase()) ? 1 : 0;
+    }
+
 
 }
