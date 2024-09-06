@@ -682,5 +682,67 @@ public class TestController {
         return myString.toLowerCase().contains(pat.toLowerCase()) ? 1 : 0;
     }
 
+    // 배열에서 문자열 대소문자 변환
+    public String[] solution45(String[] strArr) {
+        for(int i = 0; i < strArr.length; i++){
+            if(i % 2 == 0) strArr[i] = strArr[i].toLowerCase();
+            else strArr[i] = strArr[i].toUpperCase();
+        }
+
+        return strArr;
+    }
+    
+    // A강조
+    public String solution46(String myString) {
+        StringBuilder answer = new StringBuilder();
+        for(char c : myString.toCharArray()){
+            if(c == 'a' || c == 'A') answer.append(Character.toUpperCase(c));
+            else answer.append(Character.toLowerCase(c));
+        }
+
+        return answer.toString();
+
+//        myString = myString.toLowerCase();
+//        myString = myString.replace('a', 'A');
+//
+//        return myString;
+    }
+    // 특정문자 대문자로
+    public String solution47(String my_string, String alp) {
+        return my_string.replaceAll(alp, alp.toUpperCase());
+    }
+    // 특정문자열로끝나는 가장 긴 부분
+    public String solution48(String myString, String pat) {
+        int last = myString.lastIndexOf(pat);
+        return myString.substring(0, last + pat.length());
+    }
+
+    // 문자열이 몇번 등장하는지
+    public int solution49(String myString, String pat) {
+        int answer = 0;
+        int idx = 0;
+        while((idx = myString.indexOf(pat, idx)) != -1){
+            answer++;
+            idx += 1;
+        }
+
+        return answer;
+    }
+
+    public String[] solution50(String[] strArr) {
+        ArrayList<String> list = new ArrayList<>();
+
+        for(String str : strArr) {
+            if(!str.contains("ad")) {
+                list.add(str);
+            }
+        }
+
+        return list.toArray(new String[0]);
+    }
+    // 공백으로 구분
+    public String[] solution(String my_string) {
+        return my_string.trim().split("\\s+");
+    }
 
 }
