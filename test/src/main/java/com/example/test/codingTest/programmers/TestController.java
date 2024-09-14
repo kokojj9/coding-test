@@ -741,8 +741,82 @@ public class TestController {
         return list.toArray(new String[0]);
     }
     // 공백으로 구분
-    public String[] solution(String my_string) {
+    public String[] solution51(String my_string) {
         return my_string.trim().split("\\s+");
     }
+
+    //x사이의 개수
+    public int[] solution52(String myString) {
+        String[] strArr = myString.split("x", -1);
+        int[] answer = new int[strArr.length];
+
+        for(int i = 0; i < strArr.length; i++){
+            answer[i] = strArr[i].length();
+        }
+
+        return answer;
+    }
+    
+    //문자열 잘라서 정렬
+    public String[] solution53(String myString) {
+        return Arrays.stream(myString.split("x"))
+                .filter(s -> !s.isEmpty())
+                .sorted()
+                .toArray(String[]::new);
+    }
+
+    // 간단한 식 계산
+    public int solution54(String binomial) {
+        String[] str = binomial.split(" ");
+        int a = Integer.parseInt(str[0]);
+        String op = str[1];
+        int b = Integer.parseInt(str[2]);
+        int answer = 0;
+
+        switch(op){
+            case "+": answer = a + b; break;
+            case "-": answer = a - b; break;
+            case "*": answer = a * b; break;
+        }
+
+        return answer;
+    }
+
+    //문자열 바꿔서 찾기
+    public int solution55(String myString, String pat) {
+        StringBuilder sb = new StringBuilder();
+        for(char ch :myString.toCharArray()){
+            sb.append(ch == 'A' ? "B" : "A");
+        }
+
+        return sb.toString().contains(pat) ? 1 : 0;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
