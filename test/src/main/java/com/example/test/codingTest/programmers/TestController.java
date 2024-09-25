@@ -792,11 +792,54 @@ public class TestController {
         return sb.toString().contains(pat) ? 1 : 0;
     }
 
+    //세 개의 구분자
+    public String[] solution56(String myStr) {
+        String[] answer = myStr.split("[abc]");
 
+        List<String> list = new ArrayList<>();
 
+        for(String str : answer){
+            if(!str.isEmpty()) list.add(str);
+        }
 
+        if(list.isEmpty()) return new String[]{"EMPTY"};
 
+        return list.toArray(new String[0]);
+    }
 
+    // 배열의 원소만큼 추가하기
+    public int[] solution57(int[] arr) {
+        List<Integer> list = new ArrayList<>();
+
+        for(int num : arr){
+            for(int i = 0; i < num; i++){
+                list.add(num);
+            }
+        }
+
+        return list.stream().mapToInt(i -> i).toArray();
+    }
+
+    // 빈 배열에 추가, 삭제하기
+    public int[] solution58(int[] arr, boolean[] flag) {
+        List<Integer> list = new ArrayList<>();
+
+        for(int i = 0; i < arr.length; i++){
+            if(flag[i]) {
+                for(int j = 0; j < arr[i] * 2; j++) {
+                    list.add(arr[i]);
+                }
+            } else {
+                for(int j = 0; j < arr[i]; j++){
+                    if(!list.isEmpty()){
+                        list.remove(list.size() - 1);
+                    }
+                }
+            }
+        }
+
+        return list.stream().mapToInt(i -> i).toArray();
+    }
 
 
 
